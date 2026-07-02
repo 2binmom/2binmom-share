@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>투빈맘's 엄마표영어 로드맵 🇺🇲</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    background: #FFF8F0;
+    color: #1A2744;
+    min-height: 100vh;
+  }
+
+  /* ── 헤더 ── */
+  .header {
+    background: linear-gradient(135deg, #FF8C69 0%, #FF6B6B 50%, #E8943A 100%);
+    color: white;
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .header-emoji { font-size: 52px; margin-bottom: 12px; }
+  .header h1 { font-size: 27px; font-weight: 800; margin-bottom: 8px; }
+  .header p { font-size: 15px; opacity: 0.92; line-height: 1.7; }
+  .notion-link {
+    display: inline-block;
+    margin-top: 18px;
+    background: rgba(255,255,255,0.22);
+    color: white;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    transition: background 0.2s;
+  }
+  .notion-link:hover { background: rgba(255,255,255,0.35); }
+  .ig-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 14px;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .ig-btn:hover { opacity: 0.88; transform: scale(1.03); }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FEE500;
+    color: #391B1B;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 14px;
+    margin-left: 8px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .share-btn:hover { opacity: 0.88; transform: scale(1.03); }
+  .share-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%) translateY(20px);
+    background: #1A2744;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 999;
+    white-space: nowrap;
+  }
+  .share-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ── 우리 아이 나이 바로가기 ── */
+  .age-jump-section {
+    max-width: 720px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+  }
+  .age-jump-box {
+    background: white;
+    border: 2px solid #FFD6A5;
+    border-radius: 20px;
+    padding: 20px 24px 22px;
+    text-align: center;
+  }
+  .age-jump-title { font-size: 16px; font-weight: 800; color: #1A2744; margin-bottom: 4px; }
+  .age-jump-desc { font-size: 13px; color: #999; margin-bottom: 16px; }
+  .age-jump-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .age-jump-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: white;
+    padding: 14px 8px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    font-weight: 800;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .age-jump-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+  .age-jump-btn .age-jump-emoji { font-size: 22px; }
+  .age-jump-7 { background: linear-gradient(135deg, #FF9EB5, #FF6B8B); }
+  .age-jump-1 { background: linear-gradient(135deg, #7FB8FF, #3B82F6); }
+  .age-jump-2 { background: linear-gradient(135deg, #4ADE9E, #059669); }
+  .age-jump-3 { background: linear-gradient(135deg, #C4A7FF, #7C3AED); }
+
+  /* ── 인트로 말풍선 ── */
+  .intro-box {
+    max-width: 720px;
+    margin: 32px auto 0;
+    background: #FFFBF5;
+    border: 2px solid #FFD6A5;
+    border-radius: 20px;
+    padding: 24px 28px;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #3A3A3A;
+  }
+  .intro-box strong { color: #E8943A; }
+  .intro-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .intro-badges span {
+    background: #FFF0DC;
+    border: 1px solid #FFD6A5;
+    border-radius: 999px;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #E8943A;
+  }
+
+  /* ── 목차 ── */
+  .toc-section {
+    max-width: 900px;
+    margin: 32px auto 0;
+    padding: 0 20px;
+  }
+  .toc-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A2744;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px;
+  }
+  .toc-item {
+    background: white;
+    border: 1.5px solid #FFD6A5;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1A2744;
+    text-decoration: none;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .toc-item:hover {
+    background: #FFF0DC;
+    border-color: #E8943A;
+    color: #E8943A;
+  }
+  .toc-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── 본문 컨테이너 ── */
+  .content-wrap {
+    max-width: 900px;
+    margin: 36px auto 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* ── Step 카드 ── */
+  .step-card {
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    border: 1.5px solid #F0E0CC;
+    overflow: hidden;
+    scroll-margin-top: 16px;
+  }
+  .step-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 24px;
+    color: white;
+  }
+  .step-badge {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.22);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    flex-shrink: 0;
+    text-align: center;
+    line-height: 1.15;
+  }
+  .step-title-kr { font-size: 19px; font-weight: 800; }
+  .step-title-sub { font-size: 13px; opacity: 0.9; margin-top: 3px; }
+
+  .step-7 .step-head { background: linear-gradient(135deg, #FF9EB5, #FF6B8B); }
+  .step-1 .step-head { background: linear-gradient(135deg, #7FB8FF, #3B82F6); }
+  .step-2 .step-head { background: linear-gradient(135deg, #4ADE9E, #059669); }
+  .step-3 .step-head { background: linear-gradient(135deg, #C4A7FF, #7C3AED); }
+
+  .step-body { padding: 22px 24px 26px; }
+  .step-quote {
+    background: #FAFAFA;
+    border-left: 4px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .step-quote strong { color: #444; }
+
+  /* ── 서브섹션 ── */
+  .sub-block { margin-bottom: 22px; }
+  .sub-block:last-child { margin-bottom: 0; }
+  .sub-title {
+    display: inline-block;
+    font-size: 14.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .sub-title.tag-blue   { background: #E3F2FD; color: #1D6FC7; }
+  .sub-title.tag-green  { background: #E6F8EE; color: #1A9455; }
+  .sub-title.tag-yellow { background: #FFF6D8; color: #B8860B; }
+  .sub-title.tag-pink   { background: #FFE9EF; color: #E0567A; }
+
+  .sub-text {
+    font-size: 14px;
+    line-height: 1.85;
+    color: #444;
+  }
+  .sub-text strong { color: #1A2744; }
+  .sub-text ul { margin: 8px 0 8px 20px; }
+  .sub-text li { margin-bottom: 5px; }
+  .highlight { color: #E0567A; font-weight: 700; }
+
+  .point-box {
+    background: #FFF9E6;
+    border: 1.5px solid #FFE9A8;
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: #6B5A20;
+    margin-top: 14px;
+  }
+  .point-box .point-title { font-weight: 800; color: #B8860B; margin-bottom: 6px; display: block; }
+  .point-box ul { margin-left: 18px; }
+  .point-box li { margin-bottom: 4px; }
+
+  .summary-box {
+    background: #F6F0FF;
+    border: 1.5px solid #DDC8FF;
+    border-radius: 14px;
+    padding: 18px 20px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: #4B2E83;
+    margin-top: 4px;
+  }
+  .summary-box .summary-title { font-weight: 800; color: #7C3AED; margin-bottom: 8px; display: block; font-size: 14.5px; }
+
+  /* ── 타임라인 미니 카드 (초1용) ── */
+  .mini-timeline { display: flex; flex-direction: column; gap: 14px; }
+  .mini-card {
+    border: 1.5px solid #EEE;
+    border-radius: 14px;
+    padding: 16px 18px;
+    background: #FDFDFD;
+  }
+  .mini-card-title { font-size: 14.5px; font-weight: 700; margin-bottom: 8px; }
+  .mini-card ul { margin-left: 18px; }
+  .mini-card li { font-size: 13.5px; line-height: 1.8; color: #555; margin-bottom: 3px; }
+  .mini-card .mini-point { font-size: 13px; color: #999; margin-top: 8px; }
+
+  /* ── 학기 블록 (초2/초3용) ── */
+  .term-block {
+    border: 1.5px solid #EEE;
+    border-radius: 16px;
+    padding: 18px 20px 20px;
+    margin-bottom: 18px;
+    background: #FDFDFD;
+  }
+  .term-block:last-child { margin-bottom: 0; }
+  .term-title { font-size: 15.5px; font-weight: 800; margin-bottom: 6px; color: #1A2744; }
+  .term-desc { font-size: 13.5px; color: #666; line-height: 1.8; margin-bottom: 14px; }
+
+  /* ── 테이블 ── */
+  .table-scroll { overflow-x: auto; margin-bottom: 4px; border-radius: 12px; border: 1px solid #EEE; }
+  table.routine-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 560px;
+  }
+  table.routine-table th {
+    background: #FFF0DC;
+    color: #B8600F;
+    font-weight: 700;
+    text-align: left;
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
+  table.routine-table td {
+    padding: 11px 14px;
+    border-top: 1px solid #F0F0F0;
+    line-height: 1.7;
+    vertical-align: top;
+  }
+  table.routine-table tr:nth-child(even) td { background: #FAFAFA; }
+  table.routine-table td strong { color: #1A2744; }
+
+  /* ── 교재 리스트 ── */
+  .materials-section {
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    border: 1.5px solid #F0E0CC;
+    padding: 24px;
+    scroll-margin-top: 16px;
+  }
+  .materials-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .materials-header .m-emoji { font-size: 26px; }
+  .materials-header h2 { font-size: 18px; font-weight: 800; }
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .material-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFBF5;
+    border: 1.5px solid #FFE3C2;
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .material-item:hover {
+    background: #FFF0DC;
+    border-color: #E8943A;
+    transform: translateY(-1px);
+  }
+  .material-icon { font-size: 18px; flex-shrink: 0; }
+  .material-name { font-size: 13.5px; font-weight: 700; color: #1A2744; line-height: 1.4; }
+  .material-item:hover .material-name { color: #E8943A; }
+
+  /* ── 마무리 메시지 ── */
+  .closing-box {
+    max-width: 720px;
+    margin: 32px auto 0;
+    background: #FFFBF5;
+    border: 2px solid #FFD6A5;
+    border-radius: 20px;
+    padding: 26px 28px;
+    font-size: 14.5px;
+    line-height: 1.95;
+    color: #3A3A3A;
+    text-align: center;
+  }
+  .closing-box strong { color: #E8943A; }
+
+  /* ── 푸터 ── */
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: #AAA;
+    font-size: 13px;
+    line-height: 1.8;
+    background: #FFF0DC;
+    margin-top: 40px;
+  }
+  .footer a { color: #E8943A; text-decoration: none; font-weight: 600; }
+  .footer a:hover { text-decoration: underline; }
+  .copyright { margin-top: 12px; font-size: 12px; color: #CCC; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 21px; }
+    .toc-grid { grid-template-columns: 1fr 1fr; }
+    .step-head { padding: 18px 18px; }
+    .step-body { padding: 18px 18px 22px; }
+    .step-badge { width: 48px; height: 48px; font-size: 17px; }
+    .step-title-kr { font-size: 17px; }
+    .materials-grid { grid-template-columns: 1fr 1fr; }
+    .age-jump-grid { gap: 6px; }
+    .age-jump-btn { padding: 12px 4px; font-size: 12px; }
+    .age-jump-btn .age-jump-emoji { font-size: 18px; }
+    .ig-btn, .share-btn { display: flex; width: 100%; justify-content: center; margin-left: 0; }
+    .share-btn { margin-top: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── 헤더 ── -->
+<div class="header">
+  <div class="header-emoji">🇺🇲</div>
+  <h1>투빈맘's 엄마표영어💖 로드맵</h1>
+  <p>7세 시작부터 초3 지금까지, 저희 집이 실제로 걸어온 길을 그대로 정리했어요<br>영어학원 없이, 엄마표 루틴만으로 폴리 레벨테스트 합격까지! 🎬</p>
+  <div>
+    <a class="ig-btn" href="https://www.instagram.com/2bin_mom/?hl=ko" target="_blank">📸 인스타그램 @2bin_mom 바로가기</a>
+    <button class="share-btn" type="button" onclick="sharePage()">💬 카카오톡으로 공유하기</button>
+  </div>
+</div>
+
+<!-- ── 인트로 ── -->
+<div style="max-width:720px; margin:0 auto; padding:0 20px;">
+  <div class="intro-box">
+    안녕하세요 :) <strong>투빈맘</strong>이에요 💖<br><br>
+    저희 집은 영어학원 없이 <strong>엄마표 영어 루틴</strong>으로 시작해서<br>
+    <strong>초2 여름, 폴리 레벨테스트 합격</strong>까지 도전해본 케이스예요 😊<br><br>
+    처음엔 "엄마표 영어… 이게 맞나?", "뭐부터 해야 하지?" 저도 정말 많이 헤맸던 부분이라,<br>
+    ✔️ 7세 시작부터 ✔️ 초1 루틴 잡는 과정 ✔️ 초2 리딩·말하기 확장 ✔️ 현재 초3의 영어 루틴까지<br>
+    <strong>실제 저희 집에서 했던 방법을 그대로 정리해봤어요 📘</strong><br><br>
+    완벽한 방법이라기보다 👉 시행착오 + 조율 + 유지, 이 과정을 담은 기록이니<br>
+    각 가정 상황에 맞게 참고해서 봐주시면 좋겠습니다 😊
+    <div class="intro-badges">
+      <span>👶 7세 시작</span>
+      <span>📖 초1 루틴</span>
+      <span>🏆 초2 폴리 합격</span>
+      <span>✍️ 초3 라이팅·스피킹</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── 우리 아이 나이 바로가기 ── -->
+<div class="age-jump-section">
+  <div class="age-jump-box">
+    <div class="age-jump-title">👶 우리 아이는 지금 몇 세인가요?</div>
+    <div class="age-jump-desc">클릭하시면 해당 시기로 바로 이동해요</div>
+    <div class="age-jump-grid">
+      <a class="age-jump-btn age-jump-7" href="#step-7"><span class="age-jump-emoji">👶</span><span>7세</span></a>
+      <a class="age-jump-btn age-jump-1" href="#step-1"><span class="age-jump-emoji">1️⃣</span><span>초1</span></a>
+      <a class="age-jump-btn age-jump-2" href="#step-2"><span class="age-jump-emoji">2️⃣</span><span>초2</span></a>
+      <a class="age-jump-btn age-jump-3" href="#step-3"><span class="age-jump-emoji">3️⃣</span><span>초3</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ── 목차 ── -->
+<div class="toc-section">
+  <div class="toc-title">📚 목차 (클릭하면 바로 이동해요)</div>
+  <div class="toc-grid">
+    <a class="toc-item" href="#step-7"><span class="toc-dot" style="background:#FF6B8B;"></span> 1. 7세 시작</a>
+    <a class="toc-item" href="#step-1"><span class="toc-dot" style="background:#3B82F6;"></span> 2. 초1 루틴 만들기</a>
+    <a class="toc-item" href="#step-2"><span class="toc-dot" style="background:#059669;"></span> 3. 초2 확장기</a>
+    <a class="toc-item" href="#step-3"><span class="toc-dot" style="background:#7C3AED;"></span> 4. 초3 루틴</a>
+    <a class="toc-item" href="#materials"><span class="toc-dot" style="background:#E8943A;"></span> 📘 교재 리스트</a>
+  </div>
+</div>
+
+<!-- ── 본문 ── -->
+<div class="content-wrap">
+
+  <!-- STEP 1: 7세 -->
+  <div class="step-card step-7" id="step-7">
+    <div class="step-head">
+      <div class="step-badge">7세</div>
+      <div>
+        <div class="step-title-kr">Step 1. 7세 하반기 시작</div>
+        <div class="step-title-sub">경빈 7세 · 2023년 11월 시작</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="step-quote">
+        어떻게, 어떤 교재로 엄마표 영어를 했는지 <strong>A부터 Z까지</strong> 솔직하게 정리해봤어요📘<br>
+        이 내용은 경빈이의 실제 사례이니, <span class="highlight">각 가정의 상황에 맞게 참고하셔서 적용해보시면 좋을 것 같아요☺️</span>
+      </div>
+
+      <div class="sub-block">
+        <span class="sub-title tag-blue">✨ 엄마표 영어, 다시 시작!</span>
+        <div class="sub-text">
+          어릴 때는 영어 영상을 가끔 틀어주곤 했어요. 하지만 <strong>만 3세 무렵</strong>, 경빈이는 한글 발음을 제대로 못했던 시기라 그때는 과감하게 영어 노출을 멈췄습니다.<br><br>
+          이후 4년이 지나, 아이의 언어 감각이 충분히 자리 잡은 <strong>7세 11월</strong>, 다시 '엄마표 영어'를 천천히 시작했어요🌱
+        </div>
+        <div class="point-box">
+          "영어는 흘러넘칠 때 비로소 말이 된다. 듣기가 차면 리딩이 되고, 리딩이 넘치면 스피킹이 된다.<br>결국, <strong>잠복기를 견디는 시간은 엄마의 인내의 시간</strong>이다🍃"
+        </div>
+      </div>
+
+      <div class="sub-block">
+        <span class="sub-title tag-green">🎵 1. 흘려듣기 루틴</span>
+        <div class="sub-text">
+          <strong>첫 노출:</strong> 슈퍼심플송 (Super Simple Songs)
+          <ul>
+            <li>아이들이 <strong>놀 때</strong>, 자연스럽게 배경음악처럼 틀어두기</li>
+            <li><strong>차에서 이동할 때</strong>에도 계속 노출 🎶</li>
+          </ul>
+          <strong>기록:</strong> 1주차 — 좋아하는 노래가 생김 / 2주차 — 영상도 함께 보다 보니 "이건 꼭 봐야 해!" 하며 놀다가도 영상 앞에 앉음 💛
+        </div>
+        <div class="point-box">
+          <span class="point-title">핵심 포인트</span>
+          <ul>
+            <li>영어를 '공부' 아닌 '환경음'처럼 들려주기</li>
+            <li>억지 시키지 말고, 자연스럽게 흥미를 붙이기</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-block">
+        <span class="sub-title tag-green">📺 2. 영어 영상 노출</span>
+        <div class="sub-text">
+          <strong>첫 영상:</strong> 페파피그 (Peppa Pig) 🐷 — 영어도서관에서 페파피그 책을 발견한 후, 책과 연계되어 영상을 보기 시작함!<br>
+          <strong>이후 영상:</strong> 넘버블럭스 (Numberblocks) 🔢 — 짧고 반복적인 대사로 듣기 적응에 효과적
+        </div>
+        <div class="point-box">
+          <span class="point-title">⏰ 시간 &amp; 적응 포인트</span>
+          <ul>
+            <li>처음 영어영상을 접하면 <strong>5분도 버티기 힘들어요!</strong> 지극히 정상이에요🙆‍♀️</li>
+            <li>처음엔 아이가 관심 있는 주제(공룡, 포켓몬, 동물 등)로 미리 여러 영상을 찾아두세요</li>
+            <li><strong>핵심은 '여러 영상 찾아두기'!</strong> 그중 하나라도 멈춰본다면 성공, 5분이 10분이 되고 점점 길어져요</li>
+            <li><strong>하루 목표:</strong> 처음엔 30분 → 자연스럽게 집중한다면 60분까지 이어가기</li>
+            <li>이 시기의 첫 시작은 오직 <span class="highlight">"영어 영상 노출"</span>이에요. 교재·단어 공부를 함께하면 역효과!</li>
+            <li>팁: <strong>한글 TV는 잠시 끊기</strong> — "이거라도 본다"는 마음으로 영어 영상에 자연스럽게 적응해요</li>
+          </ul>
+        </div>
+        <div class="sub-text" style="margin-top:12px;">
+          <strong>💡 영어 영상 고르는 Tip</strong>
+          <ul>
+            <li>아이 관심사로 영어 검색하기 (ex. Ryan's World, Toy unboxing, Kids science)</li>
+            <li>너무 빠르지도, 느리지도 않은 <strong>보통 속도</strong>로 말하는 영상 고르기</li>
+            <li>반복해도 재밌는 영상 선택하기 🎧</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-block">
+        <span class="sub-title tag-green">📖 3. 영어 그림책 노출</span>
+        <div class="sub-text">
+          팝업북·스토리북 위주로 읽어주기 / 영어도서관에서 아이가 직접 읽고 싶은 책 고르게 하기📚
+          <ul>
+            <li><strong>쌍둥이책(영한 버전)</strong> 활용하면 스토리 이해 ↑</li>
+            <li><strong>아이의 선택권</strong>을 주면 영어책 거부감 ↓</li>
+            <li>영상으로 들은 단어·표현이 책 속에서 반복될 때, 아이의 '영어 귀'가 한층 더 단단해져요💫</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-block">
+        <span class="sub-title tag-pink">🕒 4. 7세 마무리 조언</span>
+        <div class="sub-text">
+          <ul>
+            <li><strong>6개월 목표:</strong> 하루 1시간 영어영상 루틴 만들기 (집중해서 1시간이면 이미 성공💯)</li>
+            <li><strong>성과는 단기간엔 보이지 않음!</strong> 영어는 1~2년 단위로 서서히 드러나는 공부⌛</li>
+            <li><strong>실패해도 괜찮아요.</strong> 귀에 들어온 영어는 절대 사라지지 않습니다🌱</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: 초1 -->
+  <div class="step-card step-1" id="step-1">
+    <div class="step-head">
+      <div class="step-badge">초1</div>
+      <div>
+        <div class="step-title-kr">Step 2. 초1 루틴 만들기</div>
+        <div class="step-title-sub">경빈 8세 · 2024년</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="step-quote">
+        7세에는 영어 '노출'이 전부였다면, 초1부터는 <strong>'꾸준한 루틴'과 '학습습관'</strong>이 만들어졌던 시기입니다🌱
+      </div>
+
+      <div class="term-block">
+        <div class="term-title">🧩 초1, 1학기 — 영어 학습 시작기</div>
+        <div class="term-desc">학교 적응 후 4월부터 엄마표 영어 루틴 시작 — '영어 노출 습관'을 만드는 시기</div>
+        <div class="table-scroll">
+          <table class="routine-table">
+            <tr><th>구분</th><th>학습 내용</th><th>루틴 / 포인트</th></tr>
+            <tr><td>📘 기적의 파닉스 1·2·3권</td><td>하루 1챕터씩 꾸준히 학습✏️</td><td>모르는 단어보다 소리 규칙 중심으로 익히기</td></tr>
+            <tr><td>📗 기적의 파닉스 리딩 1·2·3권</td><td>파닉스 후 리딩으로 자연스럽게 전환</td><td>소리 내어 읽기 + 리듬감 익히기</td></tr>
+            <tr><td>🎧 집중듣기 시작</td><td>하루 10분 전후, 1권 기준 반복 듣기</td><td>첫 집듣은 손가락으로 문장을 가리키며 듣기 훈련부터! 듣는 동안 시선이 글을 따라가게 해 집중력 향상</td></tr>
+            <tr><td>📖 영어 그림책</td><td>잠자리 독서 1~3권</td><td>팝업북, 스토리북 중심 / 도서관 활용📚</td></tr>
+            <tr><td>📺 영어 영상</td><td>하루 60분, 자막 OFF</td><td>페파피그 → 넘버블럭스로 적응 후, 다양한 주제의 영어 영상으로 점차 확장🎬</td></tr>
+            <tr><td>💻 화상영어(양천구 지원)</td><td>1:3 그룹수업, 주 3회(30분)</td><td>실전 리액션 &amp; 말하기 감각 익히기💬</td></tr>
+          </table>
+        </div>
+        <div class="point-box">
+          <span class="point-title">📘 투빈맘 한줄 기록</span>
+          초1 1학기는 '본격 시작기'였어요. 3월엔 학교 적응에 집중했고, 4월부터 천천히 영어 루틴을 세웠어요💛 기적의 파닉스로 소리를 익히고, 리딩·집듣·영상·그림책을 매일 조금씩 병행했어요. 집듣할 땐 항상 <strong>손가락으로 따라가며 듣기 훈련!</strong> 영상은 페파피그로 시작해 점점 다양한 영상으로 확장했답니다🎧
+        </div>
+      </div>
+
+      <div class="term-block">
+        <div class="term-title">🩵 초1, 2학기 — 영어 루틴 확립기</div>
+        <div class="term-desc">여름방학이 1주일이라 '방학 찬스'는 없었지만, 대신 학기 중 꾸준한 루틴으로 영어 감각이 자리를 잡은 시기예요.</div>
+        <div class="table-scroll">
+          <table class="routine-table">
+            <tr><th>구분</th><th>학습 내용</th><th>루틴 / 주기</th></tr>
+            <tr><td>💻 화상영어</td><td>양천구 화상영어(1:3, 30분)</td><td>월·수·금</td></tr>
+            <tr><td>✍️ 필사</td><td>하루 4~5줄씩 문장 필사</td><td>월~금</td></tr>
+            <tr><td>📖 멀티플 리딩</td><td>독해 문제집 / 하루 1챕터</td><td>월~금</td></tr>
+            <tr><td>🔤 사이트워드</td><td>스콜라스틱 사이트워드 리더스북</td><td>하루 3권(집듣 2회 + 따라읽기 1회)</td></tr>
+            <tr><td>📚 집중듣기 (ORT)</td><td>Oxford Reading Tree</td><td>하루 1권 × 3회 반복 듣기</td></tr>
+            <tr><td>📺 영어 영상</td><td>하루 60분 시청</td><td>60분이 기본이 되던 시기</td></tr>
+            <tr><td>📖 영어 그림책</td><td>잠자리 독서 1~3권</td><td>팝업북, 스토리북 중심 / 도서관 활용📚</td></tr>
+          </table>
+        </div>
+        <div class="point-box">
+          <span class="point-title">📈 변화 포인트</span>
+          <ul>
+            <li>사이트워드 리더스로 <strong>첫 낭독 읽기</strong>를 연습하며, 듣기 중심 영어에서 점차 "소리 내어 읽기"로 전환🎧</li>
+            <li><strong>필사를 시작하면서 Writing(쓰기) 루틴이 자리 잡음✏️</strong> 하루 4~5줄씩 꾸준히 쓰며, 철자와 문장 감각이 함께 자람💪</li>
+            <li>영어 루틴이 "듣기-읽기-쓰기"로 균형 잡히기 시작한 시기✨</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="term-block">
+        <div class="term-title">❄️ 초1, 겨울방학 — 영어 집중시기 (듣기·말하기 연결)</div>
+        <div class="term-desc">여름엔 1주일뿐이라 여유가 없었지만, 긴 겨울방학 동안 영어에 몰입했던 시기❄️ "집듣 → 낭독" 루틴이 본격적으로 자리를 잡았습니다🎧📖</div>
+        <div class="table-scroll">
+          <table class="routine-table">
+            <tr><th>구분</th><th>학습 내용</th><th>루틴 / 포인트</th></tr>
+            <tr><td>✍️ 필사</td><td>하루 4~5줄 영어 문장 쓰기</td><td>문장 구조 익히기 + 꾸준한 철자 훈련✏️</td></tr>
+            <tr><td>📖 멀티플</td><td>독해 문제집</td><td>하루 1챕터씩, 문해력 확장📘</td></tr>
+            <tr><td>💻 화상영어</td><td>양천구 화상영어 (1:3, 30분)</td><td>월·수·금 / 실전 말하기 훈련💬</td></tr>
+            <tr><td>🎧 집중듣기</td><td>듣기 시간 30분으로 확대!</td><td>ORT·사이트워드·리더스북 등 반복 청취로 귀 트이기👂</td></tr>
+            <tr><td>📚 낭독하기</td><td>집듣 후 하루 1권 낭독</td><td>잘 들었는지 확인용 낭독 훈련! 발음·억양·자신감 향상💪</td></tr>
+            <tr><td>📺 영어 영상</td><td>하루 60분 시청</td><td>점점 다양한 콘텐츠로 확장🎬</td></tr>
+            <tr><td>📖 영어 그림책</td><td>잠자리 독서 1~3권</td><td>팝업북, 스토리북 중심 / 도서관 활용📚</td></tr>
+          </table>
+        </div>
+        <div class="point-box">
+          <span class="point-title">📈 변화 포인트</span>
+          <ul>
+            <li>짧은 학기 루틴을 벗어나, <strong>긴 겨울방학 동안 몰입 학습!</strong></li>
+            <li><strong>집듣 시간을 30분으로 늘리고 '낭독 루틴'을 추가💗</strong> → 듣기 내용을 직접 소리 내어 말하며, 리스닝+스피킹 연결 강화🎙️</li>
+            <li>"듣기 → 읽기 → 말하기"가 완성되는 전환점이 된 시기✨</li>
+          </ul>
+        </div>
+        <div class="point-box" style="margin-top:10px; background:#F0F8FF; border-color:#C7E3FF;">
+          <span class="point-title" style="color:#1D6FC7;">📘 투빈맘 한줄 기록</span>
+          초1 겨울방학은 정말 <strong>집중의 시간💗</strong>이었어요. 긴 방학 동안 매일 일정한 루틴을 유지하며, 집듣 후 낭독하기로 영어 감각이 한 단계 성장했답니다✨ '귀로 들은 문장을 입으로 말하는' 그 첫 감각을 익힌 시기였어요☺️
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <span class="summary-title">📌 초1, 한줄 정리</span>
+        초1은 영어 영상에 <strong>익숙해지던 시기</strong>였어요. 조급하지 않게, 매일 루틴을 유지하면서 조금씩 학습의 양을 천천히 늘려갔던 시기랍니다.<br><br>
+        핵심은 <strong>루틴의 지속력!</strong> 매일 반복이 쌓이면서, <strong>초2부터는 이 루틴이 리딩 중심 루틴으로 발전</strong>해요📖
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: 초2 -->
+  <div class="step-card step-2" id="step-2">
+    <div class="step-head">
+      <div class="step-badge">초2</div>
+      <div>
+        <div class="step-title-kr">Step 3. 초2 확장기 (리딩·말하기)</div>
+        <div class="step-title-sub">경빈 9세 · 2025년 · 폴리 레벨테스트 합격✨</div>
+      </div>
+    </div>
+    <div class="step-body">
+
+      <div class="term-block">
+        <div class="term-title">🩵 초2, 1학기 — 읽기에서 '감각'을 익힌 시기</div>
+        <div class="term-desc">초1까지는 '듣기 중심 루틴'이었다면, 초2부터는 본격적으로 읽기·쓰기 감각을 익히는 시기💗 귀로 듣던 영어가 눈으로, 손끝으로 자연스럽게 이어지기 시작했어요.</div>
+        <div class="table-scroll">
+          <table class="routine-table">
+            <tr><th>구분</th><th>학습 내용</th><th>루틴 / 포인트</th></tr>
+            <tr><td>📘 리딩+단어 교재</td><td><strong>60 Words Reading</strong></td><td>하루 1챕터씩 / 라이팅 훈련으로 단어 감각 익히기✏️ 단어장 암기 대신 문장 속에서 단어·문장·듣기 감각 익히기</td></tr>
+            <tr><td>🎧 집듣</td><td>쉬운 책 + 어려운 책 병행</td><td>쉬운 책 → 이해하며 듣기, 어려운 책 → 많은 글밥에 익숙해지기👂</td></tr>
+            <tr><td>📚 낭독하기</td><td>집중듣기했던 교재로 낭독</td><td>집듣 잘했는지 확인용 낭독🎙️ → 말하기 자연스러운 연결</td></tr>
+            <tr><td>✍️ 필사</td><td>사이트워드</td><td>새로운 리더스 필사보다, 익숙한 책 중심으로 문장 구조에 자연스럽게 익숙해지기</td></tr>
+            <tr><td>📺 영어 영상</td><td>하루 60분 시청</td><td>매일 꾸준히 시청🎬 / 듣기 리듬 유지 + 흥미 지속💗</td></tr>
+            <tr><td>📖 영어 그림책</td><td>잠자리 독서 1~3권</td><td>팝업북, 스토리북 중심 / 도서관 활용📚</td></tr>
+          </table>
+        </div>
+        <div class="point-box">
+          <span class="point-title">📌 이 시기에는 화상영어는 잠시 쉬었어요</span>
+          초1 때는 필리핀 화상영어를 주3회 했었는데, 그룹 수업이다 보니 아이가 말할 기회가 많지 않더라고요. 그래서 초2부터는 <strong>1:1 북미권 화상영어로 다시 시작</strong>하게 되었어요.
+        </div>
+        <div class="point-box" style="margin-top:10px;">
+          <span class="point-title">📈 루틴 포인트</span>
+          <ul>
+            <li><strong>엄마표 영어의 첫 단계는 '영어 영상'!</strong> 7세엔 10분도 버거웠지만, 이제는 자막 없는 영어 영상이 기본 습관으로 자리 잡은 시기💗</li>
+            <li>애니메이션 영화도 2시간 자막 없이 보고, 해리포터 같은 장편 영화도 집중해서 즐길 만큼 성장✨</li>
+            <li>듣기·이해·집중력이 모두 올라가며, 영어 감각이 생활 속으로 완전히 들어온 시기📖</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="term-block">
+        <div class="term-title">☀️ 초2, 여름방학 — 폴리 레벨테스트 합격까지 준비 &amp; 도전기💪</div>
+        <div class="term-desc">3주간의 짧은 방학 동안, 폴리 준비로 문법과 듣기 문제집을 처음 경험했던 시기! 토셀로 레벨테스트 듣기 문제도 풀어봤어요💗</div>
+        <div class="table-scroll">
+          <table class="routine-table">
+            <tr><th>구분</th><th>학습 내용</th><th>루틴 / 포인트</th></tr>
+            <tr><td>📗 문법</td><td><strong>초등 영문법 777</strong></td><td>무료 온라인 강의 활용 / 아이가 즐겁게 참여했던 시간✨</td></tr>
+            <tr><td>📘 토셀 문제집</td><td><strong>TOSEL 스타터 심화</strong></td><td>폴리 대비용 / 듣기 문제 첫 도전! (초1은 스타터 심화, 초2는 주니어 과정으로 준비 권장)</td></tr>
+            <tr><td>📕 독해 교재</td><td><strong>멀티플 A</strong></td><td>하루 1챕터씩 / 워드리딩과 교차 진행📖</td></tr>
+            <tr><td>✍️ 필사</td><td>사이트워드</td><td>기존 문장 복습용 필사 / 쓰기 감각 유지✏️</td></tr>
+            <tr><td>🎧 집듣</td><td>쉬운 책 + 어려운 책 병행</td><td>쉬운 책 → 이해하며 듣기, 어려운 책 → 글밥 늘리기👂</td></tr>
+            <tr><td>💬 낭독하기</td><td>집중듣기했던 교재로 낭독</td><td>집듣 확인용 + 스피킹 감각 익히기 훈련 중💬</td></tr>
+            <tr><td>📺 영어 영상</td><td>하루 60분 시청</td><td>들리기 시작하니, 7세 때 봤던 페파피그가 재밌어진 시기🎬 이젠 내용을 이해하며 웃고 즐기던 단계💗</td></tr>
+            <tr><td>📖 영어 그림책</td><td>잠자리 독서 1~3권</td><td>팝업북, 스토리북 중심 / 도서관 활용📚</td></tr>
+          </table>
+        </div>
+        <div class="point-box">
+          <span class="point-title">📈 루틴 포인트</span>
+          <ul>
+            <li>3주간의 짧은 방학 동안, 문법·듣기 문제집(토셀) 첫 경험!</li>
+            <li>리딩·집듣·낭독 루틴은 그대로 유지하며 실전 감각 확장</li>
+            <li><span class="highlight">폴리 레벨테스트 '합격🎉'까지 해냈던 시기!</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="term-block">
+        <div class="term-title">✨ 초2, 2학기 — 슬럼프를 넘어서, 루틴 재정비기</div>
+        <div class="term-desc">폴리 합격까지 달려오고 난 뒤, 잠시 영어 슬럼프가 찾아왔던 시기💦 낭독·필사를 줄이고, 미국학교와 영어 글쓰기로 새로운 자극을 주며 루틴을 재정비했어요💗</div>
+        <div class="table-scroll">
+          <table class="routine-table">
+            <tr><th>구분</th><th>학습 내용</th><th>루틴 / 포인트</th></tr>
+            <tr><td>📘 리딩+단어 교재</td><td><strong>Word Reading 80</strong></td><td>하루 1챕터씩 / 라이팅 훈련으로 단어 감각 익히기✏️ 멀티플보다 느리지만 더 즐겁게 몰입했던 교재📖</td></tr>
+            <tr><td>🎧 집듣</td><td>쉬운 책 + 어려운 책 병행</td><td>쉬운 책 → 이해하며 듣기, 어려운 책 → 글밥 확장 시기👂 ORT는 6~8단계 반복 학습 중</td></tr>
+            <tr><td>💬 낭독하기</td><td>집듣했던 책을 랜덤으로 낭독</td><td>랜덤 페이지를 100% 정확히 읽으면 패스✨, 틀리면 다시 랜덤 복습 (낭독량은 대폭 축소)</td></tr>
+            <tr><td>🏫 유즈스쿨 미국학교</td><td>Literacy &amp; Math 수업</td><td>슬럼프를 이겨내기 위한 새로운 학습 자극✨ '언어 감각과 공부의 그릇'을 키우는 과정으로 접근</td></tr>
+            <tr><td>✍️ 영어 글쓰기</td><td>아이가 말하면 엄마가 받아쓰기 / 주 2회</td><td>필사 대신 영어 글쓰기 루틴 도입✏️</td></tr>
+            <tr><td>💻 화상영어 (VIPKid)</td><td>주 2회, 1:1 북미권 원어민</td><td>원어민과의 대화 기회 확보용💬, 표현력·발음·자신감 강화</td></tr>
+            <tr><td>📖 영어 그림책</td><td>잠자리 독서 1~3권</td><td>팝업북, 스토리북 중심 / 도서관 활용📚</td></tr>
+          </table>
+        </div>
+        <div class="point-box">
+          <span class="point-title">📈 루틴 포인트</span>
+          <ul>
+            <li>폴리 합격 후 찾아온 슬럼프를 계기로 루틴을 대폭 재조정💗</li>
+            <li>낭독은 책 1권 → 한두 장으로 축소, 유즈스쿨 낭독으로 대체</li>
+            <li>집듣은 30분으로 조율, ORT와 리더스북으로 꾸준히 유지🎧</li>
+            <li>필사 대신 영어 글쓰기 루틴 정착✏️ — 아이가 말하면 엄마가 받아쓰기</li>
+            <li>1:1 북미권 원어민 화상영어(VIPKid)로 말하기 감각 유지</li>
+            <li><span class="highlight">역시 엄마표 영어의 가장 큰 장점은 '유연한 조율력'!</span> 아이의 상태에 따라 언제든 루틴을 새롭게 구성할 수 있었던 시기🌿</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <span class="summary-title">📘 투빈맘 한줄 요약</span>
+        초2는 꾸준함이 '결과'로 이어진 해이자, 성취 후 찾아온 슬럼프를 조율하며 아이에게 맞는 리듬을 다시 찾아간 시기💗 낭독량과 필사를 줄이고, <strong>글쓰기·미국학교·북미권 화상영어로 루틴을 유연하게 바꿔가며 '꾸준함의 힘'을 다시 다진 시간</strong>입니다✨
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: 초3 -->
+  <div class="step-card step-3" id="step-3">
+    <div class="step-head">
+      <div class="step-badge">초3</div>
+      <div>
+        <div class="step-title-kr">Step 4. 초3 영어 루틴</div>
+        <div class="step-title-sub">경빈 10세 · 2026년 · 현재 진행 중</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="step-quote">
+        영어를 "공부"보다 자연스럽게 사용하는 감각을 이어가는 시기💖
+      </div>
+
+      <div class="sub-block">
+        <span class="sub-title tag-pink">✨ 초3 영어 루틴 한눈에 보기</span>
+        <div class="table-scroll">
+          <table class="routine-table">
+            <tr><th>구분</th><th>학습 내용</th><th>루틴 / 포인트</th></tr>
+            <tr><td>📘 독해</td><td><strong>에반무어 1단계</strong></td><td>하루 1지문씩 / 해석보다 이해 중심 독해</td></tr>
+            <tr><td>✏️ 단어</td><td><strong>1000 Basic English Words 1</strong></td><td>단어 암기보다 문장 속 반복 노출</td></tr>
+            <tr><td>✍️ 라이팅 + 스피킹</td><td><strong>리얼 아카데미</strong></td><td>GV 레슨으로 영작 후 실시간 교정 + 영어로 직접 말하며 표현 확장💬 라이팅을 거의 리얼 아카데미 중심으로 진행 중😊</td></tr>
+            <tr><td>🎧 집중듣기</td><td>ORT 10~12단계 + 에픽 온라인 도서관</td><td>같은 책 반복 / 2점대 후반~3점대 초반 리딩 확장 중</td></tr>
+            <tr><td>💬 화상영어</td><td>VIPKid 북미 원어민 1:1</td><td>말하기 자신감 + 실전 표현 훈련</td></tr>
+            <tr><td>📺 영어 영상</td><td>애니·영화·유튜브</td><td>자막 없이 즐기기 / 영어를 "생활언어"처럼 유지</td></tr>
+            <tr><td>📖 영어책</td><td>리더스북 + 잠자리 독서</td><td>흥미 위주 / 부담 없이 읽기 유지</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="point-box">
+        <span class="point-title">📈 루틴 포인트</span>
+        <ul>
+          <li><strong>엄마표 영어의 중심은 여전히 '영어 노출 루틴'🎬</strong> 7세엔 10분도 쉽지 않았는데, 이제는 자막 없는 영상이 자연스러운 일상이 된 시기💗</li>
+          <li>애니메이션 영화도 편하게 보고, 해리포터 같은 장편 영화도 집중해서 즐길 만큼 듣기 체력이 정말 많이 올라왔어요✨</li>
+          <li>초3부터는 읽기·듣기에서 끝나는 게 아니라, 영어로 직접 문장을 만들고 표현하는 힘도 함께 연결하는 중이에요✍️💬</li>
+          <li><span class="highlight">특히 리얼 아카데미를 활용하면서 영작 → 교정 → 말하기 흐름이 자연스럽게 이어지더라구요😊</span></li>
+        </ul>
+      </div>
+
+      <div class="summary-box" style="margin-top:18px;">
+        <span class="summary-title">📘 투빈맘 한줄 요약</span>
+        7세엔 영어 영상 10분도 힘들어하던 아이였는데, 초3이 된 지금은 자막 없는 영상과 장편 영화도 자연스럽게 즐길 만큼 영어 노출이 생활 속에 자리 잡은 시기💗<br><br>
+        엄마표로 리딩·집듣·낭독을 이어오며 영어 감각을 차근차근 쌓아왔고, 초3으로 갈수록 듣기·읽기뿐 아니라 말하기와 라이팅까지 자연스럽게 연결되고 있어요✨<br><br>
+        다만 엄마표만으로 계속 끌고 가기엔 저도 점점 체력적으로 부담이 생기더라구요🥲 그래서 에픽 같은 온라인 도서관, VIPKid 북미권 화상영어, <strong>리얼 아카데미</strong> 같은 패드 학습도 함께 활용하며 아이도 즐겁고, 엄마도 오래 갈 수 있는 방향으로 루틴을 조금씩 조율해가고 있는 중입니다📖💕
+      </div>
+    </div>
+  </div>
+
+  <!-- 교재 리스트 -->
+  <div class="materials-section" id="materials">
+    <div class="materials-header">
+      <span class="m-emoji">📘</span>
+      <h2>투빈맘's 교재 리스트</h2>
+    </div>
+    <div class="materials-grid">
+      <a class="material-item" href="https://link.coupang.com/a/cWTjOq" target="_blank"><span class="material-icon">🔤</span><span class="material-name">기적의 파닉스 (전3권)</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cWTj95" target="_blank"><span class="material-icon">🔤</span><span class="material-name">기적의 파닉스 리딩 (전3권)</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cWTqxN" target="_blank"><span class="material-icon">📙</span><span class="material-name">Scholastic Sight Word Readers</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cWTrrk" target="_blank"><span class="material-icon">📚</span><span class="material-name">Oxford Reading Tree (초1 집듣용)</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cWTrRW" target="_blank"><span class="material-icon">📕</span><span class="material-name">멀티플 독해집 (초1)</span></a>
+      <a class="material-item" href="https://www.ychenglish.co.kr/" target="_blank"><span class="material-icon">💻</span><span class="material-name">양천구 화상영어</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cXwm4h" target="_blank"><span class="material-icon">📗</span><span class="material-name">Word Reading 60</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cXwnmQ" target="_blank"><span class="material-icon">📗</span><span class="material-name">Word Reading 80</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cXwnDt" target="_blank"><span class="material-icon">📕</span><span class="material-name">멀티플 A 단계</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cXwnSm" target="_blank"><span class="material-icon">📘</span><span class="material-name">초등 영문법 777</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cXwn2S" target="_blank"><span class="material-icon">📙</span><span class="material-name">TOSEL 스타터 심화</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/cXwoAP" target="_blank"><span class="material-icon">📚</span><span class="material-name">Oxford Reading Tree (6~8단계)</span></a>
+      <a class="material-item" href="https://smartstore.naver.com/hgiftshop/products/12332747627?NaPm=ct%3Dmgx50edc%7Cci%3D06d8da8f6274db67015662962dd1f357d1fa66ea%7Ctr%3Dboknx%7Csn%3D1906326%7Chk%3D140be08ff3f18f5ee6d22c4a2300d35f19982438" target="_blank"><span class="material-icon">✏️</span><span class="material-name">영어 글쓰기 워크북</span></a>
+      <a class="material-item" href="https://www.useprep.co.kr/sub/product_purchase.asp" target="_blank"><span class="material-icon">🏫</span><span class="material-name">유즈스쿨 미국학교</span></a>
+      <a class="material-item" href="https://kr.vipkid.com/website/account/signin?channel=K2000ZN" target="_blank"><span class="material-icon">💻</span><span class="material-name">VIPKid 화상영어</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/dImTe6vr52" target="_blank"><span class="material-icon">📕</span><span class="material-name">에반무어</span></a>
+      <a class="material-item" href="https://link.coupang.com/a/dImVWWU9tI" target="_blank"><span class="material-icon">✏️</span><span class="material-name">1000 Basic English Words</span></a>
+      <a class="material-item" href="https://www.getepic.com/" target="_blank"><span class="material-icon">📱</span><span class="material-name">에픽 온라인 도서관</span></a>
+      <a class="material-item" href="https://realacademy.link/49P5pUf" target="_blank"><span class="material-icon">✍️</span><span class="material-name">리얼 아카데미</span></a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── 마무리 메시지 ── -->
+<div class="closing-box">
+  읽어보시면서 "아 우리도 한번 해봐야 하나…" 싶었던 부분 있으셨나요? 😊<br><br>
+  엄마표 영어는 누가 맞고 틀린 방법이 있는 게 아니라<br>
+  👉 <strong>우리 아이에게 맞는 속도</strong> 👉 <strong>우리 집에 맞는 방식</strong><br>
+  이걸 찾아가는 과정인 것 같아요 💖<br><br>
+  정답을 찾기보다 👉 부담 없이, 가능한 것부터 👉 우리 아이 리듬에 맞게 시작해보시면 그걸로도 충분하다고 생각합니다 😊<br><br>
+  혹시 보시고, 궁금한 점이나 고민되는 부분 있으시면 편하게 DM 주세요 💕<br>
+  늦더라도 꼭 확인하고, 답변 드리고 있답니다!
+</div>
+
+<!-- ── 푸터 ── -->
+<div class="footer">
+  <p>이번 자료가 조금이라도 도움이 되셨다면, 앞으로 올라오는 투빈맘 피드에도<br>"좋아요"나 "댓글"로 함께해주시면 저한테 큰 힘이 돼요 💖💖💖</p>
+  <a class="ig-btn" href="https://www.instagram.com/2bin_mom/?hl=ko" target="_blank">📸 인스타그램 @2bin_mom 바로가기</a>
+  <p class="copyright">
+    ⚠️ 본 자료는 투빈맘이 직접 정리한 콘텐츠입니다. 무단 복제·캡처·배포 금지 🚫<br>
+    상업적 활용 시 법적 조치가 이루어질 수 있습니다.<br>
+    © 2026 투빈맘 / 인스타 <a href="https://www.instagram.com/2bin_mom" target="_blank">@2bin_mom</a> | <a href="https://app.notion.com/p/35fa9b27793980c080b5e2d71b1928c2" target="_blank">노션 원본</a>
+  </p>
+</div>
+
+<div class="share-toast" id="shareToast">링크가 복사됐어요! 카카오톡에 붙여넣기 해주세요 💛</div>
+
+<script>
+function sharePage() {
+  var url = location.href;
+  var title = document.title;
+  var text = "투빈맘's 엄마표영어 로드맵 — 7세부터 초3까지 실제로 했던 방법을 그대로 정리했어요💖";
+
+  if (navigator.share) {
+    navigator.share({ title: title, text: text, url: url }).catch(function () {});
+    return;
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(showShareToast).catch(function () {
+      window.prompt('아래 링크를 복사해주세요:', url);
+    });
+  } else {
+    window.prompt('아래 링크를 복사해주세요:', url);
+  }
+}
+
+function showShareToast() {
+  var toast = document.getElementById('shareToast');
+  toast.classList.add('show');
+  setTimeout(function () { toast.classList.remove('show'); }, 2600);
+}
+</script>
+
+</body>
+</html>
