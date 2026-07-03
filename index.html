@@ -72,43 +72,6 @@
   }
   .ig-btn:hover { opacity: 0.88; transform: scale(1.03); }
 
-  .share-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #FEE500;
-    color: #391B1B;
-    text-decoration: none;
-    padding: 10px 22px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 700;
-    margin-top: 14px;
-    margin-left: 8px;
-    border: none;
-    cursor: pointer;
-    transition: opacity 0.15s, transform 0.15s;
-  }
-  .share-btn:hover { opacity: 0.88; transform: scale(1.03); }
-  .share-toast {
-    position: fixed;
-    left: 50%;
-    bottom: 30px;
-    transform: translateX(-50%) translateY(20px);
-    background: #1A2744;
-    color: white;
-    padding: 12px 22px;
-    border-radius: 999px;
-    font-size: 13.5px;
-    font-weight: 600;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s, transform 0.25s;
-    z-index: 999;
-    white-space: nowrap;
-  }
-  .share-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
   /* ── 우리 아이 나이 바로가기 ── */
   .age-jump-section {
     max-width: 720px;
@@ -466,8 +429,7 @@
     .age-jump-grid { gap: 6px; }
     .age-jump-btn { padding: 12px 4px; font-size: 12px; }
     .age-jump-btn .age-jump-emoji { font-size: 18px; }
-    .ig-btn, .share-btn { display: flex; width: 100%; justify-content: center; margin-left: 0; }
-    .share-btn { margin-top: 10px; }
+    .ig-btn { display: flex; width: 100%; justify-content: center; margin-left: 0; }
   }
 </style>
 </head>
@@ -480,7 +442,6 @@
   <p>7세 시작부터 초3 지금까지, 저희 집이 실제로 걸어온 길을 그대로 정리했어요<br>영어학원 없이, 엄마표 루틴만으로 폴리 레벨테스트 합격까지! 🎬</p>
   <div>
     <a class="ig-btn" href="https://www.instagram.com/2bin_mom/?hl=ko" target="_blank">📸 인스타그램 @2bin_mom 바로가기</a>
-    <button class="share-btn" type="button" onclick="sharePage()">💬 카카오톡으로 공유하기</button>
   </div>
 </div>
 
@@ -924,38 +885,9 @@
   <p class="copyright">
     ⚠️ 본 자료는 투빈맘이 직접 정리한 콘텐츠입니다. 무단 복제·캡처·배포 금지 🚫<br>
     상업적 활용 시 법적 조치가 이루어질 수 있습니다.<br>
-    © 2026 투빈맘 / 인스타 <a href="https://www.instagram.com/2bin_mom" target="_blank">@2bin_mom</a> | <a href="https://app.notion.com/p/35fa9b27793980c080b5e2d71b1928c2" target="_blank">노션 원본</a>
+    © 2026 투빈맘 / 인스타 <a href="https://www.instagram.com/2bin_mom" target="_blank">@2bin_mom</a>
   </p>
 </div>
-
-<div class="share-toast" id="shareToast">링크가 복사됐어요! 카카오톡에 붙여넣기 해주세요 💛</div>
-
-<script>
-function sharePage() {
-  var url = location.href;
-  var title = document.title;
-  var text = "투빈맘's 엄마표영어 로드맵 — 7세부터 초3까지 실제로 했던 방법을 그대로 정리했어요💖";
-
-  if (navigator.share) {
-    navigator.share({ title: title, text: text, url: url }).catch(function () {});
-    return;
-  }
-
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(url).then(showShareToast).catch(function () {
-      window.prompt('아래 링크를 복사해주세요:', url);
-    });
-  } else {
-    window.prompt('아래 링크를 복사해주세요:', url);
-  }
-}
-
-function showShareToast() {
-  var toast = document.getElementById('shareToast');
-  toast.classList.add('show');
-  setTimeout(function () { toast.classList.remove('show'); }, 2600);
-}
-</script>
 
 </body>
 </html>
